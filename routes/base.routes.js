@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+;
 
 const uploader = require("../configs/cloudinary.config");
 
@@ -22,11 +23,11 @@ router.get("/codes/:code", (req, res, next) => {
 
 router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
 	if (!req.file) {
-		next(new Error("No file uploade"));
+		next(new Error("No file uploaded"));
 		return;
 	}
 
-	res.json({ secure_url: req.file.secure_url });
+	res.json(req.file);
 });
 
 module.exports = router;
