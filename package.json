@@ -22,9 +22,10 @@
     "node-sass-middleware": "^0.11.0",
     "sass": "^1.32.8",
     "serve-favicon": "^2.5.0",
-    "short-unique-id": "^3.2.3"
+    "short-unique-id": "^3.2.3",
+     "nodemon": "^1.12.1"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+   
   }
 }
