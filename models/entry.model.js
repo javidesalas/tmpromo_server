@@ -2,18 +2,19 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const entrySchema = new Schema({
-    name: String,
+    firstName: String,
     lastName: String,
     birthDate: Date,
     zipCode: Number,
     email: String,
     phone: String,
     code: String,
-    buyedAt: {
+    boughtAt: {
         type: String,
         enum: ['Alcampo', 'Carrefour']
     },
     imageUrl: String,
+    acceptedTerms: Boolean
 }, {
     timestamps: true
 })

@@ -15,12 +15,8 @@ const storage = new CloudinaryStorage({
 		folder: "tickets",
 		format: async (req, file) => "jpg",
 		public_id: (req, file) => {
-			const uid = new ShortUniqueId({ length: 5 });
-			console.log(req.body);
-
-			const filename = `${req.body.name}_${req.body.lastname}_${uid.dict
-				.join("")
-				.substring(0, 6)}`;
+			const uid = new ShortUniqueId({ length: 6 });
+			const filename = `ticket-${uid.dict.join("").substring(0, 6)}`;
 			return filename;
 		},
 		transformation: { height: 800, width: 800, crop: "fit" },
@@ -30,10 +26,7 @@ const storage = new CloudinaryStorage({
 const uploader = multer({
 	storage: storage,
 	fileFilter: function (req, file, cb) {
-		if (
-			file.mimetype !== "image/png" &&
-			file.mimetype !== "image/jpeg"
-		) {
+		if (file.mimetype !== "image/png" && file.mimetype !== "image/jpeg") {
 			return cb(null, false);
 		} else {
 			cb(null, true);

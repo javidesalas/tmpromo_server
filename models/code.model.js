@@ -8,5 +8,5 @@ const codeSchema = new Schema({
     timestamps: true
 })
 
-const Code = mongoose.model('Code', entrySchema)
+const Code = mongoose.model('Code', codeSchema)
 module.exports = Code
