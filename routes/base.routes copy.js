@@ -25,10 +25,6 @@ router.post("/newEntry", (req, res, next) => {
 		})
 		.catch((err) => res.status(500).json({ error: "Código Inexistente" }));
 
-	// Entry.create(req.body)
-	// 	.then((response) => res.json(response))
-	// 	.catch((err) => res.status(500).json({ error: "Error de servidor. Por favor prueba de nuevo más tarde" }));
-
 	function addEntry() {
 		Entry.create(req.body)
 			.then((response) => res.json(response))
