@@ -8,17 +8,49 @@ const Code = require("../models/code.model");
 // Endpoints
 
 router.post("/newEntry", (req, res, next) => {
-	const { code } = req.body.code;
+	const {
+		firstName,
+		lastName,
+		birthDate,
+		zipCode,
+		email,
+		phone,
+		code,
+		boughtAt,
+		imageUrl,
+		acceptedTerms,
+	} = req.body;
 
-	Code.find;
-
-	Entry.create(req.body)
-		.then((response) => res.json(response))
-		.catch((err) => res.status(500).json(err));
-});
-
-router.get("/codes/:code", (req, res, next) => {
-	const code = req.params.code;
+	Code.findOne({ code: code })
+		.then((response) => {
+			const codeId = response._id;
+			if (response.used === false) {
+				Entry.create({
+					firstName,
+					lastName,
+					birthDate,
+					zipCode,
+					email,
+					phone,
+					code,
+					boughtAt,
+					imageUrl,
+					acceptedTerms,
+				})
+					.then((response) => {
+						return Code.findByIdAndUpdate(codeId, { used: true });
+					})
+					.then((response) => res.json(response))
+					.catch((err) =>
+						res
+							.status(500)
+							.json({ error: "Error de servidor.Por favor prueba más tarde" })
+					);
+			} else {
+				res.status(500).json({ error: "Código ya utilizado" });
+			}
+		})
+		.catch((err) => res.status(500).json({ error: "Código inválido" }));
 });
 
 router.post("/upload", uploader.single("imageUrl"), (req, res, next) => {
