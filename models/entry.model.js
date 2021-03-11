@@ -11,7 +11,16 @@ const entrySchema = new Schema({
     code: String,
     boughtAt: {
         type: String,
-        enum: ['Alcampo', 'Carrefour']
+        enum: [
+            'Ahorramas',
+            'Alcampo',
+            'Bon Preu',
+            'Caprabo',
+            'Carrefour',
+            'Eroski',
+            'ECI',
+            'Otros'
+        ]
     },
     imageUrl: String,
     acceptedTerms: Boolean
