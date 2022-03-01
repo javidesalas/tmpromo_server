@@ -1,6 +1,10 @@
 {
   "name": "express-generator",
   "version": "0.0.0",
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
