@@ -12,13 +12,14 @@ const entrySchema = new Schema({
     boughtAt: {
         type: String,
         enum: [
-            'Ahorramas',
             'Alcampo',
-            'Bon Preu',
-            'Caprabo',
             'Carrefour',
-            'Eroski',
+            'Consum',
+            'Dia',
             'ECI',
+            'Eroski',
+            'Froiz',
+            'Gadisa',
             'Otros'
         ]
     },
